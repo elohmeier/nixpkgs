@@ -504,6 +504,8 @@ in {
 
   oauthenticator = callPackage ../development/python-modules/oauthenticator { };
 
+  openapi-spec-validator = callPackage ../development/python-modules/openapi-spec-validator { };
+
   ordered-set = callPackage ../development/python-modules/ordered-set { };
 
   osmnx = callPackage ../development/python-modules/osmnx { };
