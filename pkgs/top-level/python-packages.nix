@@ -306,6 +306,8 @@ in {
 
   clustershell = callPackage ../development/python-modules/clustershell { };
 
+  connexion = callPackage ../development/python-modules/connexion { };
+
   cozy = callPackage ../development/python-modules/cozy { };
 
   dendropy = callPackage ../development/python-modules/dendropy { };
