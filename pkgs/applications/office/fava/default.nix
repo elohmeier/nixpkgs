@@ -12,6 +12,8 @@ buildPythonApplication rec {
     sha256 = "115r99l6xfliafgkpcf0mndqrvijix5mflg2i56s7xwqr3ch8z9k";
   };
 
+  patches = [ ./colors.patch ];
+
   doCheck = false;
 
   propagatedBuildInputs = with python3.pkgs;

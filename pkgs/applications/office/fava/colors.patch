@@ -1,0 +1,80 @@
+--- fava-1.9/fava/static/css/style.css.orig	2019-01-20 19:35:12.000000000 +0100
++++ fava-1.9/fava/static/css/style.css	2019-01-20 20:12:50.000000000 +0100
+@@ -30,31 +30,31 @@
+   --color-transparent-black: hsla(0, 0%, 0%, .5);
+   --color-transparent-white: hsla(0, 0%, 100%, .5);
+ 
+-  --color-background: #fff;
+-  --color-background-darker: #d9d9d9;
+-  --color-background-darkest: #ccc;
+-  --color-text: hsl(0, 0%, 27%);
+-  --color-text-lighter: hsl(0, 0%, 33%);
+-  --color-text-lightest: hsl(0, 0%, 47%);
++  --color-background: #000;
++  --color-background-darker: #333;
++  --color-background-darkest: #666;
++  --color-text: #fff;
++  --color-text-lighter: #eee;
++  --color-text-lightest: #ddd;
+ 
+-  --color-links: hsl(203, 100%, 32%);
++  --color-links: #cff;
+   --color-links-hover: hsl(203, 100%, 22%);
+   --color-links-transparent: hsla(203, 100%, 32%, .5);
+-  --color-headings: #333;
++  --color-headings: #ffc;
+   --color-error: hsl(0, 100%, 30%);
+   --color-warning: hsl(52, 84%, 56%);
+-  --color-code-background: #f8f8f8;
++  --color-code-background: #222;
+ 
+-  --color-sidebar-text: #444;
++  --color-sidebar-text: #fff;
+   --color-sidebar-text-hover: var(--color-links);
+-  --color-sidebar-background: hsl(0, 0%, 96%);
+-  --color-sidebar-border: hsl(0, 0%, 87%);
++  --color-sidebar-background: #000;
++  --color-sidebar-border: #333;
+ 
+   --color-autocomplete-match: #ffd27c;
+ 
+-  --color-header: hsl(203, 100%, 32%);
+-  --color-header-darker: hsl(203, 100%, 22%);
+-  --color-header-light: hsl(203, 56%, 45%);
++  --color-header: #555;
++  --color-header-darker: #111;
++  --color-header-light: #222;
+   --color-header-tinted: hsl(203, 47%, 66%);
+   --color-header-text: hsl(0, 0%, 100%);
+   --color-header-text-half: hsla(0, 0%, 100%, .5);
+@@ -69,9 +69,9 @@
+   --color-notification-error: hsl(0, 100%, 30%);
+   --color-notification-warning: hsl(52, 84%, 56%);
+ 
+-  --color-table-header-text: #666;
+-  --color-table-header-background: #e6e6e6;
+-  --color-table-border: #f2f2f2;
++  --color-table-header-text: #ccc;
++  --color-table-header-background: #111;
++  --color-table-border: #020202;
+ 
+   --color-treetable-expander: #afc1d3;
+ 
+@@ -88,7 +88,7 @@
+   --color-editor-class: #b84;
+   --color-editor-date: #099;
+   --color-editor-constant: #008080;
+-  --color-editor-account: var(--color-links);
++  --color-editor-account: #000;
+   --color-editor-invalid: #333;
+   --color-editor-activeline: #ffc;
+ 
+@@ -111,7 +111,7 @@
+ .journal .budget { --entry-type-color: #ffddae; }
+ 
+ .journal {
+-  --color-journal-postings: hsl(0, 0%, 92%);
++  --color-journal-postings: #333;
+   --color-journal-metadata: hsl(210, 44%, 67%);
+   --color-journal-tag: hsl(210, 61%, 64%);
+   --color-journal-link: hsl(203, 39%, 85%);
