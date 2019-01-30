@@ -276,6 +276,8 @@ in {
 
   braintree = callPackage ../development/python-modules/braintree { };
 
+  django-sesame = callPackage ../development/python-modules/django-sesame { };
+
   breathe = callPackage ../development/python-modules/breathe { };
 
   brotli = callPackage ../development/python-modules/brotli { };
@@ -371,6 +373,8 @@ in {
   face = callPackage ../development/python-modules/face { };
 
   fastpbkdf2 = callPackage ../development/python-modules/fastpbkdf2 {  };
+
+  favicon = callPackage ../development/python-modules/favicon {  };
 
   fido2 = callPackage ../development/python-modules/fido2 {  };
 
