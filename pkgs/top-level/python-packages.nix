@@ -860,6 +860,8 @@ in {
 
   aiohttp-socks = callPackage ../development/python-modules/aiohttp-socks { };
 
+  aiohttp-swagger = callPackage ../development/python-modules/aiohttp-swagger { };
+
   aioprocessing = callPackage ../development/python-modules/aioprocessing { };
 
   aiorpcx = callPackage ../development/python-modules/aiorpcx { };
