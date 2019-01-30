@@ -276,6 +276,8 @@ in {
 
   braintree = callPackage ../development/python-modules/braintree { };
 
+  django-crispy-forms = callPackage ../development/python-modules/django-crispy-forms { };
+
   django-sesame = callPackage ../development/python-modules/django-sesame { };
 
   breathe = callPackage ../development/python-modules/breathe { };
