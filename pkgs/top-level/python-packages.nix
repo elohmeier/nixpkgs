@@ -302,7 +302,11 @@ in {
 
   clikit = callPackage ../development/python-modules/clikit { };
 
+  clickclick = callPackage ../development/python-modules/clickclick { };
+
   clustershell = callPackage ../development/python-modules/clustershell { };
+
+  connexion = callPackage ../development/python-modules/connexion { };
 
   cozy = callPackage ../development/python-modules/cozy { };
 
@@ -501,6 +505,8 @@ in {
   numericalunits = callPackage ../development/python-modules/numericalunits { };
 
   oauthenticator = callPackage ../development/python-modules/oauthenticator { };
+
+  openapi-spec-validator = callPackage ../development/python-modules/openapi-spec-validator { };
 
   ordered-set = callPackage ../development/python-modules/ordered-set { };
 
@@ -849,6 +855,8 @@ in {
   aiohttp-remotes = callPackage ../development/python-modules/aiohttp-remotes { };
 
   aiohttp-socks = callPackage ../development/python-modules/aiohttp-socks { };
+
+  aiohttp-swagger = callPackage ../development/python-modules/aiohttp-swagger { };
 
   aioprocessing = callPackage ../development/python-modules/aioprocessing { };
 
@@ -2179,6 +2187,8 @@ in {
   ssdeep = callPackage ../development/python-modules/ssdeep { };
 
   statsd = callPackage ../development/python-modules/statsd { };
+
+  swagger-ui-bundle = callPackage ../development/python-modules/swagger-ui-bundle { };
 
   multi_key_dict = callPackage ../development/python-modules/multi_key_dict { };
 
