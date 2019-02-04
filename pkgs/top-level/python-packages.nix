@@ -182,6 +182,8 @@ in {
 
   asn1crypto = callPackage ../development/python-modules/asn1crypto { };
 
+  nobbofin = callPackage ../development/python-modules/nobbofin { };
+
   aspy-yaml = callPackage ../development/python-modules/aspy.yaml { };
 
   astral = callPackage ../development/python-modules/astral { };
