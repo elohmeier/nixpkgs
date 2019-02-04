@@ -2829,6 +2829,8 @@ in {
 
   jinja2 = callPackage ../development/python-modules/jinja2 { };
 
+  jinja2-cli = callPackage ../development/python-modules/jinja2-cli { };
+
   jinja2_time = callPackage ../development/python-modules/jinja2_time { };
 
   jinja2_pluralize = callPackage ../development/python-modules/jinja2_pluralize { };
