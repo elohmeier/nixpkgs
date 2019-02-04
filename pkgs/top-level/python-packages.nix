@@ -182,6 +182,8 @@ in {
 
   asn1crypto = callPackage ../development/python-modules/asn1crypto { };
 
+  nobbofin = callPackage ../development/python-modules/nobbofin { };
+
   aspy-yaml = callPackage ../development/python-modules/aspy.yaml { };
 
   astral = callPackage ../development/python-modules/astral { };
@@ -405,6 +407,8 @@ in {
   goocalendar = callPackage ../development/python-modules/goocalendar { };
 
   grandalf = callPackage ../development/python-modules/grandalf { };
+
+  gprof2dot = callPackage ../development/python-modules/gprof2dot { };
 
   gsd = callPackage ../development/python-modules/gsd { };
 
@@ -792,11 +796,11 @@ in {
 
   supervise_api = callPackage ../development/python-modules/supervise_api { };
 
-  syncserver = callPackage ../development/python-modules/syncserver {};
-
   tables = callPackage ../development/python-modules/tables {
     hdf5 = pkgs.hdf5.override { zlib = pkgs.zlib; };
   };
+
+  tableaudocumentapi = callPackage ../development/python-modules/tableaudocumentapi { };
 
   trueskill = callPackage ../development/python-modules/trueskill { };
 
@@ -1755,6 +1759,8 @@ in {
 
   fb-re2 = callPackage ../development/python-modules/fb-re2 { };
 
+  filetype = callPackage ../development/python-modules/filetype { };
+
   flexmock = callPackage ../development/python-modules/flexmock { };
 
   flit = callPackage ../development/python-modules/flit { };
@@ -1782,6 +1788,8 @@ in {
   fastcache = callPackage ../development/python-modules/fastcache { };
 
   functools32 = callPackage ../development/python-modules/functools32 { };
+
+  future-fstrings = callPackage ../development/python-modules/future-fstrings { };
 
   gateone = callPackage ../development/python-modules/gateone { };
 
@@ -1886,6 +1894,8 @@ in {
   imaplib2 = callPackage ../development/python-modules/imaplib2 { };
 
   ipfsapi = callPackage ../development/python-modules/ipfsapi { };
+
+  isbnlib = callPackage ../development/python-modules/isbnlib { };
 
   itsdangerous = callPackage ../development/python-modules/itsdangerous { };
 
@@ -2821,6 +2831,8 @@ in {
 
   jinja2 = callPackage ../development/python-modules/jinja2 { };
 
+  jinja2-cli = callPackage ../development/python-modules/jinja2-cli { };
+
   jinja2_time = callPackage ../development/python-modules/jinja2_time { };
 
   jinja2_pluralize = callPackage ../development/python-modules/jinja2_pluralize { };
@@ -3025,6 +3037,8 @@ in {
   };
 
   matrix-client = callPackage ../development/python-modules/matrix-client { };
+
+  mautrix-appservice = callPackage ../development/python-modules/mautrix-appservice { };
 
   maya = callPackage ../development/python-modules/maya { };
 
@@ -3477,6 +3491,8 @@ in {
     name = "${python.libPrefix}-${pkgs.kmsxx.name}";
   });
 
+  precis-i18n = callPackage ../development/python-modules/precis-i18n { };
+
   pvlib = callPackage ../development/python-modules/pvlib { };
 
   pybase64 = callPackage ../development/python-modules/pybase64 { };
@@ -3743,6 +3759,8 @@ in {
 
   pyls-mypy = callPackage ../development/python-modules/pyls-mypy {};
 
+  pyu2f = callPackage ../development/python-modules/pyu2f { };
+
   pyudev = callPackage ../development/python-modules/pyudev {
     inherit (pkgs) systemd;
   };
@@ -3875,7 +3893,14 @@ in {
   # alias for an older package which did not support Python 3
   Quandl = callPackage ../development/python-modules/quandl { };
 
-  qscintilla = callPackage ../development/python-modules/qscintilla { };
+  qscintilla-qt4 = callPackage ../development/python-modules/qscintilla { };
+
+  qscintilla-qt5 = callPackage ../development/python-modules/qscintilla-qt5 {
+    qscintillaCpp = pkgs.libsForQt5.qscintilla;
+    lndir = pkgs.xorg.lndir;
+  };
+
+  qscintilla = self.qscintilla-qt4;
 
   qserve = callPackage ../development/python-modules/qserve { };
 
@@ -4429,6 +4454,10 @@ in {
   freezegun = callPackage ../development/python-modules/freezegun { };
 
   taskw = callPackage ../development/python-modules/taskw { };
+
+  telethon = callPackage ../development/python-modules/telethon { };
+
+  telethon-session-sqlalchemy = callPackage ../development/python-modules/telethon-session-sqlalchemy { };
 
   terminaltables = callPackage ../development/python-modules/terminaltables { };
 
