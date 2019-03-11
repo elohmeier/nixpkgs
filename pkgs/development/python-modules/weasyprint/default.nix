@@ -17,7 +17,8 @@
   pytest-flake8,
   pytestcov,
   isPy3k,
-  glibcLocales
+  glibcLocales,
+  substituteAll
 }:
 
 buildPythonPackage rec {
@@ -44,22 +45,17 @@ buildPythonPackage rec {
 
   propagatedBuildInputs = [ cairosvg pyphen cffi cssselect lxml html5lib tinycss pygobject2 ];
 
-  postPatch = ''
-    # Linux
-    substituteInPlace weasyprint/text.py --replace "libgobject-2.0.so" "${glib.out}/lib/libgobject-2.0.so"
-    substituteInPlace weasyprint/text.py --replace "libpango-1.0.so" "${pango.out}/lib/libpango-1.0.so"
-    substituteInPlace weasyprint/text.py --replace "libpangocairo-1.0.so" "${pango.out}/lib/libpangocairo-1.0.so"
-    substituteInPlace weasyprint/fonts.py --replace "libfontconfig.so.1" "${fontconfig.lib}/lib/libfontconfig.so.1"
-    substituteInPlace weasyprint/fonts.py --replace "libpangoft2-1.0.so" "${pango.out}/lib/libpangoft2-1.0.so"
-
-    # MacOS
-    substituteInPlace weasyprint/text.py --replace "libgobject-2.0.dylib" "${glib.out}/lib/libgobject-2.0.dylib"
-    substituteInPlace weasyprint/text.py --replace "libpango-1.0.dylib" "${pango.out}/lib/libpango-1.0.dylib"
-    substituteInPlace weasyprint/text.py --replace "libpangocairo-1.0.dylib" "${pango.out}/lib/libpangocairo-1.0.dylib"
-    substituteInPlace weasyprint/fonts.py --replace "libfontconfig-1.dylib" "${fontconfig.lib}/lib/libfontconfig.1.dylib"
-    substituteInPlace weasyprint/fonts.py --replace "libpangoft2-1.0.dylib" "${pango.out}/lib/libpangoft2-1.0.dylib"
-  '';
-
+  patches = [
+    (substituteAll {
+      src = ./library-paths.patch;
+      fontconfig = "${fontconfig.lib}/lib/libfontconfig${stdenv.hostPlatform.extensions.sharedLibrary}";
+      pangoft2 = "${pango.out}/lib/libpangoft2-1.0${stdenv.hostPlatform.extensions.sharedLibrary}";
+      gobject = "${glib.out}/lib/libgobject-2.0${stdenv.hostPlatform.extensions.sharedLibrary}";
+      pango = "${pango.out}/lib/libpango-1.0${stdenv.hostPlatform.extensions.sharedLibrary}";
+      pangocairo = "${pango.out}/lib/libpangocairo-1.0${stdenv.hostPlatform.extensions.sharedLibrary}";
+    })
+  ];
+      
   src = fetchPypi {
     inherit version;
     pname = "WeasyPrint";
