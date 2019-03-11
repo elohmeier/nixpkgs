@@ -14935,6 +14935,7 @@ EOF
     doCheck = false;
   };
 
+  weasyprint = callPackage ../development/python-modules/weasyprint { };
 
   libarchive = self.python-libarchive; # The latter is the name upstream uses
   python-libarchive = buildPythonPackage rec {
