@@ -1,37 +1,40 @@
-{ buildPythonPackage,
-  fetchPypi,
-  cairosvg,
-  pyphen,
-  cffi,
-  cssselect,
-  lxml,
-  html5lib,
-  tinycss,
-  pygobject2,
-  glib,
-  pango,
-  fontconfig,
-  lib, stdenv,
-  pytest,
-  pytestrunner,
-  pytest-isort,
-  pytest-flake8,
-  pytestcov,
-  isPy3k,
-  substituteAll
+{ buildPythonPackage
+, fetchPypi
+, cairosvg
+, pyphen
+, cffi
+, cssselect
+, lxml
+, html5lib
+, tinycss
+, pygobject2
+, glib
+, pango
+, fontconfig
+, lib
+, stdenv
+, pytestCheckHook
+, pytestrunner
+, pytest-isort
+, pytest-flake8
+, pytestcov
+, isPy3k
+, substituteAll
 }:
+
+# TODO: add AHEM: https://github.com/Kozea/Ahem
+# https://www.w3.org/Style/CSS/Test/Fonts/Ahem/
 
 buildPythonPackage rec {
   pname = "weasyprint";
-  version = "52";
+  version = "52.4";
   disabled = !isPy3k;
 
-  # excluded test needs the Ahem font
-  checkPhase = ''
-    runHook preCheck
-    pytest -k 'not test_font_stretch'
-    runHook postCheck
-  '';
+  disabledTests = [
+    "test_font_stretch" # test needs the Ahem font
+    "test_shrink_to_fit_floating_point_error_1"
+    "test_shrink_to_fit_floating_point_error_2"
+  ];
 
   # ignore failing flake8-test
   prePatch = ''
@@ -39,9 +42,11 @@ buildPythonPackage rec {
         --replace '[tool:pytest]' '[tool:pytest]\nflake8-ignore = E501'
   '';
 
-  checkInputs = [ pytest pytestrunner pytest-isort pytest-flake8 pytestcov ];
+  checkInputs = [ pytestCheckHook pytestrunner pytest-isort pytest-flake8 pytestcov ];
 
-  FONTCONFIG_FILE = "${fontconfig.out}/etc/fonts/fonts.conf";
+  FONTCONFIG_FILE = makeFontsConf {
+    fontDirectories = [ahem];
+  };
 
   propagatedBuildInputs = [ cairosvg pyphen cffi cssselect lxml html5lib tinycss pygobject2 ];
 
@@ -59,7 +64,7 @@ buildPythonPackage rec {
   src = fetchPypi {
     inherit version;
     pname = "WeasyPrint";
-    sha256 = "0rwf43111ws74m8b1alkkxzz57g0np3vmd8as74adwnxslfcg4gs";
+    sha256 = "sha256-i2SNNbHoKM4yEHj+WT75Jnw1KAJC/Y9nPJH0jkF6Sl8=";
   };
 
   meta = with lib; {
