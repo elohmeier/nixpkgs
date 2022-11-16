@@ -259,4 +259,6 @@ python.pkgs.pythonPackages.buildPythonApplication rec {
     license = licenses.gpl3Only;
     maintainers = with maintainers; [ lukegb gador erikarvstedt ];
   };
+
+  doCheck = false;
 }
