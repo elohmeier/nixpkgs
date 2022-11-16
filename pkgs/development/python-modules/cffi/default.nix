@@ -11,6 +11,8 @@ if isPyPy then null else buildPythonPackage rec {
     sha256 = "sha256-1AC/uaN7E1ElPLQCZxzqfom97MKU6AFqcH9tHYrJNPk=";
   };
 
+  patches = lib.optional stdenv.isDarwin ./darwin-use-libffi-closures.diff;
+
   buildInputs = [ libffi ];
 
   nativeBuildInputs = [ pkg-config ];
@@ -29,9 +31,7 @@ if isPyPy then null else buildPythonPackage rec {
   NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isClang
     "-Wno-unused-command-line-argument -Wno-unreachable-code -Wno-c++11-narrowing";
 
-  # Lots of tests fail on aarch64-darwin due to "Cannot allocate write+execute memory":
-  # * https://cffi.readthedocs.io/en/latest/using.html#callbacks
-  doCheck = !stdenv.hostPlatform.isMusl && !(stdenv.isDarwin && stdenv.isAarch64);
+  doCheck = !stdenv.hostPlatform.isMusl;
 
   checkInputs = [ pytestCheckHook ];
 
