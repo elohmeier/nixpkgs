@@ -16,6 +16,5 @@ stdenv.mkDerivation {
     description = "Overfeatured front-end to crypt, from the Debian whois package";
     license = licenses.gpl2;
     maintainers = with maintainers; [ cstrahan fpletz ];
-    platforms = platforms.linux;
   };
 }
