@@ -333,8 +333,8 @@ in {
     system.build = { inherit initialRamdisk; };
 
     boot.initrd.availableKernelModules = [
-      "autofs4"           # systemd needs this for some features
-      "tpm-tis" "tpm-crb" # systemd-cryptenroll
+      "autofs4" # systemd needs this for some features
+      "tpm-tis" # systemd-cryptenroll
     ];
 
     boot.initrd.systemd = {
