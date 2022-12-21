@@ -333,9 +333,12 @@ in {
     system.build = { inherit initialRamdisk; };
 
     boot.initrd.availableKernelModules = [
-      "autofs4"           # systemd needs this for some features
-      "tpm-tis" "tpm-crb" # systemd-cryptenroll
-    ];
+      "autofs4" # systemd needs this for some features
+    ]
+      # systemd-cryptenroll
+      ++ lib.optional (config.boot.kernelPackages.kernel.config.isEnabled "TCG_TIS") "tpm-tis"
+      ++ lib.optional (config.boot.kernelPackages.kernel.config.isEnabled "TCG_CRB") "tpm-crb"
+    ;
 
     boot.initrd.systemd = {
       initrdBin = [pkgs.bash pkgs.coreutils cfg.package.kmod cfg.package] ++ config.system.fsPackages;
