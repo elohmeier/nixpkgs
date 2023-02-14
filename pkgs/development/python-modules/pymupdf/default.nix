@@ -9,6 +9,9 @@
 , jbig2dec
 , libjpeg_turbo
 , gumbo
+, pythonOlder
+, stdenv
+, xcbuild
 }:
 
 buildPythonPackage rec {
@@ -25,8 +28,21 @@ buildPythonPackage rec {
     substituteInPlace setup.py \
         --replace '/usr/include/mupdf' ${mupdf.dev}/include/mupdf
   '';
-  nativeBuildInputs = [ swig ];
-  buildInputs = [ mupdf freetype harfbuzz openjpeg jbig2dec libjpeg_turbo gumbo ];
+  nativeBuildInputs = [
+    swig
+  ] ++ lib.optionals (stdenv.isDarwin) [
+    xcbuild
+  ];
+
+  buildInputs = [
+    mupdf
+    freetype
+    harfbuzz
+    openjpeg
+    jbig2dec
+    libjpeg_turbo
+    gumbo
+  ];
 
   doCheck = false;
 
@@ -37,6 +53,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/pymupdf/PyMuPDF";
     maintainers = with maintainers; [ teto ];
     license = licenses.agpl3Only;
-    platforms = platforms.linux;
   };
 }
