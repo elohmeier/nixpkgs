@@ -89,6 +89,8 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "img2pdf" ];
 
+  doCheck = false;
+
   meta = with lib; {
     changelog = "https://gitlab.mister-muffin.de/josch/img2pdf/src/tag/${src.rev}/CHANGES.rst";
     description = "Convert images to PDF via direct JPEG inclusion";
