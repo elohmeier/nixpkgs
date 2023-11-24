@@ -4,7 +4,7 @@
 , fetchFromGitHub
 , flit-core
 , psycopg2
-, pydantic
+, pydantic_2
 , pytest-asyncio
 , pytest-django
 , pytestCheckHook
@@ -13,7 +13,7 @@
 
 buildPythonPackage rec {
   pname = "django-ninja";
-  version = "0.22.2";
+  version = "1.0.1";
   format = "pyproject";
   disabled = pythonOlder "3.7";
 
@@ -21,10 +21,10 @@ buildPythonPackage rec {
     owner = "vitalik";
     repo = "django-ninja";
     rev = "v${version}";
-    hash = "sha256-oeisurp9seSn3X/5jFF9DMm9nU6uDYIU1b6/J3o2be0=";
+    hash = "sha256-hF6Z8i8M4mQtVPIupTSEIkJh0i/oMFFuE9PpODxq4fw=";
   };
 
-  propagatedBuildInputs = [ django pydantic ];
+  propagatedBuildInputs = [ django pydantic_2 ];
 
   nativeBuildInputs = [ flit-core ];
 
